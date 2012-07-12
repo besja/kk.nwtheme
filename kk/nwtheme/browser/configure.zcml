@@ -1,0 +1,61 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser" 
+    xmlns:plone="http://namespaces.plone.org/plone" 
+    i18n_domain="kk.nwtheme">
+    <include package="plone.app.portlets" />
+
+  <!-- 'Custom Theme' Zope 3 browser layer
+    Register views, viewlets and resources for this layer to make sure
+    they only apply to the 'Custom Theme' theme.
+    You can also use this layer to override default Plone browser views
+    and viewlets only within the 'Custom Theme' theme.
+  -->
+  <!-- Customize the navigation portlet -->
+       <plone:portletRenderer
+       portlet="plone.app.portlets.portlets.navigation.INavigationPortlet"
+       layer=".interfaces.IThemeSpecific"
+       class=".navigation.MyNavRenderer"
+       />
+  <interface
+      interface=".interfaces.IThemeSpecific"
+      type="zope.publisher.interfaces.browser.IBrowserSkinType"
+      name="Custom Theme"
+      />
+  
+  <!-- Viewlets registration -->
+  <!-- EXAMPLE (UNCOMMENT TO MAKE AVAILABLE):
+  <browser:viewlet
+      name="kk.someviewlet"
+      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+      class=".viewlets.MyViewlet"
+      layer=".interfaces.IThemeSpecific"
+      permission="zope2.View"
+      />
+  -->
+
+  <!-- Zope 3 browser resources -->
+
+  <!-- Resource directory for images
+    See kk/nwtheme/browser/images/README.txt
+    for more information about registering images as Zope 3 browser
+    resources.
+  -->
+  <browser:resourceDirectory
+      name="kk.nwtheme.images"
+      directory="images"
+      layer=".interfaces.IThemeSpecific"
+      />
+
+  <!-- Resource directory for stylesheets
+    See kk/nwtheme/browser/stylesheets/README.txt
+    for more information about registering stylesheets as Zope 3 browser
+    resources.
+  -->
+  <browser:resourceDirectory
+      name="kk.nwtheme.stylesheets"
+      directory="stylesheets"
+      layer=".interfaces.IThemeSpecific"
+      />
+
+</configure>
