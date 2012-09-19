@@ -29,7 +29,8 @@
         <a tal:attributes="href python:use_remote_url and item_remote_url or item_url;
                            title node/Description;
                            class string:$item_class${li_class}${li_extr_class}${li_folder_class} $item_type_class;
-                           data-filter string:.${li_id_class}">
+                           data-filter string:.${li_id_class};
+                           data-appui string:contentfilter">
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:content="node/Title">Selected Item Title</span>
         </a>
